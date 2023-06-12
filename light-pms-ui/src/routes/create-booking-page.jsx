@@ -48,14 +48,12 @@ export default function CreateBooking() {
             endDate: dateFormat(endDate, DATE_PATTERN),
             type: bookingType,
             propertyId: propertyId
-        })
-            .then(res => {
-                navigate(`/properties/${propertyId}/bookings`);
-            })
-            .catch(error => {
-                console.log(error);
-                setError(error.response.data.message);
-            });
+        }).then(res => {
+            navigate(`/properties/${propertyId}/bookings`);
+        }).catch(error => {
+            console.log(error);
+            setError(error.response.data.message);
+        });
 
     }
 

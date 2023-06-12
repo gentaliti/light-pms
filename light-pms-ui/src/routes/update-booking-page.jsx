@@ -6,7 +6,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import dateFormat from "dateformat";
 import {API_URL, DATE_PATTERN} from "../constants";
 import Button from "../components/button/Button";
-import {format, parseISO} from "date-fns";
 
 export default function UpdateBookingPage() {
     const {propertyId} = useParams();
@@ -19,6 +18,7 @@ export default function UpdateBookingPage() {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
     const [bookingType, setBookingType] = useState('RESERVATION');
+    const [error, setError] = useState(null);
 
     const fetchBooking = async () => {
         const res = await axios.get(`${API_URL}/booking/${bookingId}`);
@@ -42,9 +42,12 @@ export default function UpdateBookingPage() {
             startDate: dateFormat(startDate, DATE_PATTERN),
             endDate: dateFormat(endDate, DATE_PATTERN),
             type: bookingType
+        }).then(res => {
+            navigate(`/properties/${propertyId}/bookings`);
+        }).catch(error => {
+            console.log(error);
+            setError(error.response.data.message);
         });
-
-        navigate(`/properties/${propertyId}/bookings`);
     }
 
     const createBookingForm = <div className='create-booking-form'>
@@ -85,9 +88,11 @@ export default function UpdateBookingPage() {
 
     </div>
 
+    const errorMsg = error ? <p>{error}</p> : '';
 
     return <div className='page container'>
         <h1>Save booking</h1>
         {createBookingForm}
+        {errorMsg}
     </div>
 }
