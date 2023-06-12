@@ -1,5 +1,6 @@
 package com.gentaliti.booking.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.gentaliti.booking.domain.BookingStatus;
 import com.gentaliti.booking.domain.BookingType;
@@ -24,8 +25,10 @@ public class BookingDto {
     private Integer propertyId;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime startDate;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
     private LocalDateTime endDate;
 }

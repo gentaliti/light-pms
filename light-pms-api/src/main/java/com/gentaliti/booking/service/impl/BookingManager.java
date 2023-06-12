@@ -43,7 +43,10 @@ public class BookingManager {
 
     private BookingDto updateReservationBooking(BookingDto bookingDto) {
         Booking booking = bookingRepository.findById(bookingDto.getId()).orElseThrow(() -> new NotFoundException("Reservation not found"));
+        booking.setStartDate(bookingDto.getStartDate());
+        booking.setEndDate(bookingDto.getEndDate());
         booking.setStatus(bookingDto.getStatus());
+        booking.setType(bookingDto.getType());
         checkForOverlappingBookings(bookingDto);
         booking = bookingRepository.save(booking);
         return BookingDtoMapper.mapBooking(booking);
@@ -55,6 +58,7 @@ public class BookingManager {
         booking.setStartDate(bookingDto.getStartDate());
         booking.setEndDate(bookingDto.getEndDate());
         booking.setStatus(bookingDto.getStatus());
+        booking.setType(bookingDto.getType());
         booking = bookingRepository.save(booking);
         return BookingDtoMapper.mapBooking(booking);
     }
