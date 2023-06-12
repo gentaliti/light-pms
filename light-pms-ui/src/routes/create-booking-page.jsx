@@ -15,6 +15,7 @@ export default function CreateBooking() {
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
     const [bookingType, setBookingType] = useState('RESERVATION');
+    const [error, setError] = useState(null);
 
     const [searchParams, setSearchParams] = useSearchParams();
     const bookingId = searchParams.get("bookingId");
@@ -47,9 +48,15 @@ export default function CreateBooking() {
             endDate: dateFormat(endDate, DATE_PATTERN),
             type: bookingType,
             propertyId: propertyId
-        });
+        })
+            .then(res => {
+                navigate(`/properties/${propertyId}/bookings`);
+            })
+            .catch(error => {
+                console.log(error);
+                setError(error.response.data.message);
+            });
 
-        navigate(`/properties/${propertyId}/bookings`);
     }
 
     const createBookingForm = <div className='create-booking-form'>
@@ -91,9 +98,12 @@ export default function CreateBooking() {
     </div>
 
     const header = bookingId ? <h1>{`Rebooking a new booking from id: ${bookingId}`}</h1> : <h1>Create new booking</h1>
+    const errorMsg = error ? <p>{error}</p> : '';
 
     return <div className='page container'>
         {header}
         {createBookingForm}
+
+        {errorMsg}
     </div>
 }

@@ -19,6 +19,8 @@ public class BookingManager {
     private PropertyService propertyService;
 
     BookingDto createBooking(BookingDto bookingDto) {
+        validateBooking(bookingDto);
+
         Property property = propertyService.findById(bookingDto.getPropertyId());
         Booking booking = BookingDtoMapper.mapBooking(bookingDto);
         booking.setProperty(property);
@@ -32,6 +34,7 @@ public class BookingManager {
     }
 
     BookingDto updateBooking(BookingDto bookingDto) {
+        validateBooking(bookingDto);
         if (bookingDto.getId() == null) {
             throw new IllegalArgumentException("Missing booking id");
         }
@@ -61,6 +64,25 @@ public class BookingManager {
         booking.setType(bookingDto.getType());
         booking = bookingRepository.save(booking);
         return BookingDtoMapper.mapBooking(booking);
+    }
+
+
+    private void validateBooking(BookingDto bookingDto) {
+        if (bookingDto.getType() == null) {
+            throw new IllegalArgumentException("Booking must have a type");
+        }
+
+        if (bookingDto.getStartDate() == null) {
+            throw new IllegalArgumentException("Booking must have a startDate");
+        }
+
+        if (bookingDto.getEndDate() == null) {
+            throw new IllegalArgumentException("Booking must have a endDate");
+        }
+
+        if (bookingDto.getStartDate().isAfter(bookingDto.getEndDate())) {
+            throw new IllegalArgumentException("Start date must be lower than end date");
+        }
     }
 
     private void checkForOverlappingBookings(BookingDto bookingDto) {
