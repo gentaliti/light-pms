@@ -32,6 +32,9 @@ export default function BookingPage() {
             fetchBookings();
         });
     }
+    const onRebook = (booking) => {
+        navigate(`/properties/${propertyId}/create-booking?bookingId=${booking.id}`);
+    }
 
     const config = [
         {
@@ -57,9 +60,11 @@ export default function BookingPage() {
         {
             label: 'Modify',
             render: (row) => <div className="flex space-around">
-                <PmsLink primary onClick={() => navigate(`/properties/${propertyId}/update-booking/${row.id}`)}>Edit</PmsLink>
+                <PmsLink primary
+                         onClick={() => navigate(`/properties/${propertyId}/update-booking/${row.id}`)}>Edit</PmsLink>
                 <Button warning onClick={() => onBookingCancel(row)}>Cancel</Button>
                 <Button danger onClick={() => onBookingDelete(row)}>Delete</Button>
+                <Button secondary onClick={() => onRebook(row)}>Rebook</Button>
             </div>
         }
     ];
@@ -71,7 +76,9 @@ export default function BookingPage() {
         fetchBookings();
     }, []);
 
-    const content = bookings.length > 0 ?  <SortableTable className="width-full" data={bookings} config={config} keyFn={keyFn}/> : <h3>No bookings yet...</h3>
+    const content = bookings.length > 0 ?
+        <SortableTable className="width-full" data={bookings} config={config} keyFn={keyFn}/> :
+        <h3>No bookings yet...</h3>
 
     return <div className="page booking-page">
         <div className="container">
