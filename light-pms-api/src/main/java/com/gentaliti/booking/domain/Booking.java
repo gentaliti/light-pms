@@ -3,6 +3,7 @@ package com.gentaliti.booking.domain;
 
 import com.gentaliti.property.domain.Property;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,10 +32,10 @@ public class Booking {
     @ManyToOne
     private Property property;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private BookingType type;
 
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private BookingStatus status;
 
     private LocalDateTime startDate;

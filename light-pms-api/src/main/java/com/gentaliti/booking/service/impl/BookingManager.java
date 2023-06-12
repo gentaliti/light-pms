@@ -12,6 +12,8 @@ import com.gentaliti.property.service.PropertyService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @AllArgsConstructor
 public class BookingManager {
@@ -26,9 +28,11 @@ public class BookingManager {
         booking.setProperty(property);
         booking.setType(booking.getType());
         booking.setStatus(BookingStatus.OPEN);
+
         if (BookingType.RESERVATION.equals(bookingDto.getType())) {
             checkForOverlappingBookings(bookingDto);
         }
+
         booking = bookingRepository.save(booking);
         return BookingDtoMapper.mapBooking(booking);
     }
@@ -50,7 +54,9 @@ public class BookingManager {
         booking.setEndDate(bookingDto.getEndDate());
         booking.setStatus(bookingDto.getStatus());
         booking.setType(bookingDto.getType());
+
         checkForOverlappingBookings(bookingDto);
+
         booking = bookingRepository.save(booking);
         return BookingDtoMapper.mapBooking(booking);
     }
@@ -86,6 +92,10 @@ public class BookingManager {
     }
 
     private void checkForOverlappingBookings(BookingDto bookingDto) {
+        List<Booking> collision = bookingRepository.findCollision(bookingDto.getStartDate(), bookingDto.getEndDate(), bookingDto.getId() != null ? bookingDto.getId() : -1);
+        if (!collision.isEmpty()) {
+            throw new IllegalArgumentException("Booking is overlapping with an existing one");
+        }
     }
 
 }
