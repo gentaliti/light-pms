@@ -84,7 +84,7 @@ export default function BookingPage() {
         <div className="container">
 
             <div className="booking-header m-bottom-24 flex space-between">
-                <h1>Displaying bookings for booking with id: {propertyId}</h1>
+                <h1>Displaying bookings for property with id: {propertyId}</h1>
                 <PmsLink secondary to={`/properties/${propertyId}/create-booking`}>Add a booking</PmsLink>
             </div>
 
