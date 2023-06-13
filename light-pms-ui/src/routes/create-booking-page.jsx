@@ -8,13 +8,14 @@ import {API_URL, DATE_PATTERN} from "../constants";
 import Button from "../components/button/Button";
 
 export default function CreateBooking() {
+    const defaultBookingType = 'RESERVATION';
     const {propertyId} = useParams();
     const navigate = useNavigate();
 
 
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
-    const [bookingType, setBookingType] = useState('RESERVATION');
+    const [bookingType, setBookingType] = useState(defaultBookingType);
     const [error, setError] = useState(null);
 
     const [searchParams, setSearchParams] = useSearchParams();
@@ -25,7 +26,7 @@ export default function CreateBooking() {
             console.log('here');
             setStartDate(null);
             setEndDate(null);
-            setBookingType(null);
+            setBookingType(defaultBookingType);
             return;
         }
         const res = await axios.get(`${API_URL}/booking/${bookingId}`);
@@ -83,7 +84,7 @@ export default function CreateBooking() {
                     <label>Booking Type</label>
                 </div>
                 <div className="value">
-                    <select onChange={(e) => setBookingType(e.target.value)}>
+                    <select defaultValue={bookingType} onChange={(e) => setBookingType(e.target.value)}>
                         <option value="RESERVATION">RESERVATION</option>
                         <option value="BLOCK">BLOCK</option>
                     </select>

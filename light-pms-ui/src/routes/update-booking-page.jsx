@@ -76,8 +76,8 @@ export default function UpdateBookingPage() {
                     <label>Booking Type</label>
                 </div>
                 <div className="value">
-                    <select onChange={(e) => setBookingType(e.target.value)}>
-                        <option value="RESERVATION">RESERVATION</option>
+                    <select defaultValue={bookingType} onChange={(e) => setBookingType(e.target.value)}>
+                        <option  value="RESERVATION">RESERVATION</option>
                         <option value="BLOCK">BLOCK</option>
                     </select>
 

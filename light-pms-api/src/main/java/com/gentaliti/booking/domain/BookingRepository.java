@@ -12,6 +12,6 @@ import java.util.List;
 public interface BookingRepository extends JpaRepository<Booking, Integer> {
     List<Booking> findAllByPropertyId(Integer propertyId);
 
-    @Query(value = "FROM pms_booking WHERE status <> 'CANCELED' AND id <> :excludeId AND ((endDate <= :startDate AND endDate >= startDate) OR (startDate <= :endDate AND endDate >= endDate))")
+    @Query(value = "FROM pms_booking WHERE status <> 'CANCELED' AND id <> :excludeId AND ((startDate <= :startDate AND endDate >= :startDate) OR (startDate <= :endDate AND endDate >= :endDate))")
     List<Booking> findCollision(@Param("startDate") LocalDateTime startDate, @Param("endDate") LocalDateTime endDate, @Param("excludeId") Integer excludeId);
 }
