@@ -72,8 +72,8 @@ The lock is established based on the Property ID, ensuring that only one user ca
 
 Exception handling in this project is implemented using Spring Controller advice. There are two types of exceptions that are handled:
 
-NotFoundException: This exception results in a 404 error being produced in the API.
-LightPmsValidationException: This exception leads to a 409 error being generated in the API.
+- NotFoundException: This exception results in a 404 error being produced in the API.
+- LightPmsValidationException: This exception leads to a 409 error being generated in the API.
 
 ### Logging
 
