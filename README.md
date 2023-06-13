@@ -4,6 +4,21 @@
 
 Light version of Property Management System written in Spring Boot & React.
 
+##Table of Contents
+- [Backend](#backend)
+  - [Domain](#domain)
+  - [Distributed Locking](#distributed-locking)
+  - [Exception Handling](#exception-handling)
+  - [Logging](#logging)
+- [UI](#ui)
+  - [Code structure](#code-structure)
+  - [Additional notes](#additional-notes)
+- [Infrastructure](#infrastrucure)
+    - [Code structure](#code-structure)
+    - [Additional notes](#additional-notes)
+
+<a name="headers"/>
+
 ## Features
 
 - [x] Booking Overlaps
@@ -21,7 +36,7 @@ In this project, there are two models: Property and Booking. These models are re
 Bookings can be of type `RESERVATION` and `BLOCK`. Reservation is used by the clients to add a reservation for a property. Block is a special booking type which is used when the property owner or manager selects a range of days during
 which no guest can make a booking.
 
-### Distributed Locking
+### Distributed locking
 
 In situations where two users attempt to create or update a booking simultaneously, there is a possibility of conflicting booking times. 
 To address this issue, I used ShedLock, which provides a distributed locking mechanism. 
@@ -51,9 +66,12 @@ Exceptions which produce a 4xx API errors are logged at `WARN` level. Everything
 Divided it into separate modules or folders, each serving a specific purpose:
 
 - **Components**: This folder contains reusable components that can be used across different pages or sections of the UI.
-- **Routes**: Here, the pages of the application are organized. Each page is represented by a separate file or module, making it easier to manage and navigate between different sections of the UI.
-- **Styles**: This folder is dedicated to managing the styles of the UI components and pages. It includes SCSS, or other styling files to ensure consistent visual presentation throughout the application.
+- **Routes**: Here, the pages of the application are organized.
+- **Styles**: This folder is dedicated to managing the styles of the UI components and pages.
 
 
 ### Additional notes
 For simplicity, for all the Properties a single local image is used (rather than saving the image path in the database).
+
+
+## Infrastrucure
