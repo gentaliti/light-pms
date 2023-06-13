@@ -30,7 +30,7 @@ Light version of Property Management System written in Spring Boot & React.
 
 ## Infrastructure
 ### Running in docker
-
+Run it with docker-compose. It uses prebuilt images of back and front, which are already pushed to the public docker hub.
 ```shell
 cd ./light-pms-infra
 
