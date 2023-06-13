@@ -17,9 +17,14 @@ Light version of Property Management System written in Spring Boot & React.
 
 In this project, there are two models: Property and Booking. These models are related in a One-to-Many manner, meaning that a single Property can have multiple Bookings.
 
+Bookings can be of type `RESERVATION` and `BLOCK`. Reservation is used be the clients to add a reservation for a property. Block is a special booking type which is used when the property owner or manager selects a range of days during
+which no guest can make a booking.
+
 ### Distributed Locking
 
-In situations where two users attempt to create or update a booking simultaneously, there is a possibility of conflicting booking times. To address this issue, I implemented ShedLock, which provides a distributed locking mechanism. By employing ShedLock, all instances of the backend can utilize a shared lock (specifically, a database lock).
+In situations where two users attempt to create or update a booking simultaneously, there is a possibility of conflicting booking times. 
+To address this issue, I used ShedLock, which provides a distributed locking mechanism. 
+By employing ShedLock, all instances of the backend can utilize a shared lock (specifically, a database lock).
 
 The lock is established based on the Property ID, ensuring that only one user can hold the lock at any given time to create or update a booking for a single property.
 
