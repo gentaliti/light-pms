@@ -51,10 +51,8 @@ export default function CreateBooking() {
         }).then(res => {
             navigate(`/properties/${propertyId}/bookings`);
         }).catch(error => {
-            console.log(error);
             setError(error.response.data.message);
         });
-
     }
 
     const createBookingForm = <div className='create-booking-form'>

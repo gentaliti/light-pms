@@ -1,4 +1,4 @@
-import {Link, useNavigate, useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useEffect, useState} from "react";
 import axios from "axios";
 import SortableTable from "../components/table/SortableTable";
@@ -68,9 +68,7 @@ export default function BookingPage() {
             </div>
         }
     ];
-    const keyFn = (row) => {
-        return row.id
-    }
+    const keyFn = (row) => row.id;
 
     useEffect(() => {
         fetchBookings();

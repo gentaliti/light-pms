@@ -4,20 +4,17 @@ import axios from "axios";
 import {API_URL} from "../constants";
 
 export default function PropertyPage() {
-
     const [properties, setProperties] = useState([]);
 
     const fetchProperties = async () => {
         const res = await axios.get(`${API_URL}/property`);
-
         setProperties(res.data);
     }
 
     useEffect(() => {
         fetchProperties();
     }, []);
-
-
+    
     const propertiesList = properties?.map(property => {
         return <Card key={property.id} content={property}/>
     });

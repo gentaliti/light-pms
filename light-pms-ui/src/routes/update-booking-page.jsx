@@ -10,8 +10,6 @@ import Button from "../components/button/Button";
 export default function UpdateBookingPage() {
     const {propertyId} = useParams();
     const {bookingId} = useParams();
-
-
     const navigate = useNavigate();
 
     const [booking, setBooking] = useState(null);
@@ -77,7 +75,7 @@ export default function UpdateBookingPage() {
                 </div>
                 <div className="value">
                     <select defaultValue={bookingType} onChange={(e) => setBookingType(e.target.value)}>
-                        <option  value="RESERVATION">RESERVATION</option>
+                        <option value="RESERVATION">RESERVATION</option>
                         <option value="BLOCK">BLOCK</option>
                     </select>
 

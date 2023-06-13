@@ -94,7 +94,8 @@ Divided it into separate modules or folders, each serving a specific purpose:
 - **Styles**: This folder is dedicated to managing the styles of the UI components and pages.
 
 
-### Additional notes
-For simplicity, for all the Properties a single local image is used (rather than saving the image path in the database).
+### Additional UI notes
+- There are parts of the code in the UI code which can be improved more (by having Separation of Concerns)
+- For simplicity, for all the Properties a single local image is used (rather than saving the image path in the database).
 
 
