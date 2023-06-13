@@ -10,6 +10,7 @@ Light version of Property Management System written in Spring Boot & React.
 - [x] Distributed Locking 
 - [x] Crud Operations for Bookings
 - [x] Crud Operations for Blocks
+- [x] Rebooking option
 
 ## Backend
 
@@ -17,7 +18,7 @@ Light version of Property Management System written in Spring Boot & React.
 
 In this project, there are two models: Property and Booking. These models are related in a One-to-Many manner, meaning that a single Property can have multiple Bookings.
 
-Bookings can be of type `RESERVATION` and `BLOCK`. Reservation is used be the clients to add a reservation for a property. Block is a special booking type which is used when the property owner or manager selects a range of days during
+Bookings can be of type `RESERVATION` and `BLOCK`. Reservation is used by the clients to add a reservation for a property. Block is a special booking type which is used when the property owner or manager selects a range of days during
 which no guest can make a booking.
 
 ### Distributed Locking
