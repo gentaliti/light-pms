@@ -22,8 +22,8 @@ public class ExceptionHandlerAdvice {
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(value = IllegalArgumentException.class)
-    protected ResponseEntity<ResponseDto> conflictException(IllegalArgumentException e) {
+    @ExceptionHandler(value = LightPmsValidationException.class)
+    protected ResponseEntity<ResponseDto> conflictException(LightPmsValidationException e) {
         log.warn(e.getMessage(), e);
         ResponseDto response = ResponseDto.builder()
                 .error(HttpStatus.CONFLICT.getReasonPhrase())
