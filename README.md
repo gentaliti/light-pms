@@ -89,7 +89,7 @@ Exceptions which produce a 4xx API errors are logged at `WARN` level. Everything
 
 Divided it into separate modules or folders, each serving a specific purpose:
 
-- **Components**: This folder contains reusable components that can be used across different pages or sections of the UI.
+- **Components**: This folder contains reusable components that can be used across different pages or sections of the UI. 
 - **Routes**: Here, the pages of the application are organized.
 - **Styles**: This folder is dedicated to managing the styles of the UI components and pages.
 
@@ -97,5 +97,5 @@ Divided it into separate modules or folders, each serving a specific purpose:
 ### Additional UI notes
 - There are parts of the code in the UI code which can be improved more, by having Separation of Concerns, reusing code etc.
 - For simplicity, for all the Properties a single local image is used (rather than saving the image path in the database).
-
+- Components found on this project are copied from my other repo: https://github.com/gentaliti/react-toolkit
 
