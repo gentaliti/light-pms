@@ -1,0 +1,17 @@
+version: '3'
+services:
+
+  light-pms-api:
+    image: "gentaliti/light-pms-api:0.0.1"
+    container_name: light-pms-api
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING.PROFILES.ACTIVE=default
+  light-pms-ui:
+    image: "gentaliti/light-pms-ui:0.0.1"
+    container_name: light-pms-ui
+    ports:
+      - "3000:3000"
+    links:
+      - light-pms-api

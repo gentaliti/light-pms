@@ -4,7 +4,19 @@
 
 Light version of Property Management System written in Spring Boot & React.
 
+## Features
+
+- [x] Booking Overlaps
+- [x] Distributed Locking
+- [x] Crud Operations for Bookings
+- [x] Crud Operations for Blocks
+- [x] Rebooking option
+
+
 ##Table of Contents
+- [Infrastructure](#infrastructure)
+  - [How to run](#running-in-docker)
+  - [Additional notes](#running-without-docker)
 - [Backend](#backend)
   - [Domain](#domain)
   - [Distributed Locking](#distributed-locking)
@@ -13,20 +25,31 @@ Light version of Property Management System written in Spring Boot & React.
 - [UI](#ui)
   - [Code structure](#code-structure)
   - [Additional notes](#additional-notes)
-- [Infrastructure](#infrastrucure)
-    - [Code structure](#code-structure)
-    - [Additional notes](#additional-notes)
 
-<a name="headers"/>
 
-## Features
+## Infrastructure
+### Running in docker
 
-- [x] Booking Overlaps
-- [x] Distributed Locking 
-- [x] Crud Operations for Bookings
-- [x] Crud Operations for Blocks
-- [x] Rebooking option
+```shell
+cd ./light-pms-infra
 
+docker-compose up
+```
+
+### Running without docker
+Running the API
+```shell
+cd ./light-pms-api
+mvn clean install -DskipTests
+mvn spring-boot:run
+```
+
+Running the UI
+```shell
+cd ./light-pms-ui
+npm i
+npm start
+```
 ## Backend
 
 ### Domain
@@ -74,4 +97,3 @@ Divided it into separate modules or folders, each serving a specific purpose:
 For simplicity, for all the Properties a single local image is used (rather than saving the image path in the database).
 
 
-## Infrastrucure
