@@ -10,11 +10,11 @@ public interface PropertyBookingService {
 
     BookingDto findById(int id);
 
+    List<BookingDto> findAllByPropertyId(Integer propertyId);
+
     BookingDto create(BookingDto bookingDto);
 
     BookingDto update(BookingDto bookingDto);
 
     ResponseDto delete(int id);
-
-    List<BookingDto> findAllByPropertyId(Integer propertyId);
 }

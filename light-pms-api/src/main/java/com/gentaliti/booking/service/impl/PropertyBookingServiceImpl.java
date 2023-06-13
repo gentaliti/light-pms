@@ -45,13 +45,11 @@ public class PropertyBookingServiceImpl implements PropertyBookingService {
     }
 
     @Override
-    @Transactional
     public BookingDto create(BookingDto bookingDto) {
         return bookingManager.createBooking(bookingDto);
     }
 
     @Override
-    @Transactional
     public BookingDto update(BookingDto bookingDto) {
         return bookingManager.updateBooking(bookingDto);
     }

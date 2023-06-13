@@ -9,7 +9,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -27,6 +26,6 @@ public class PropertyServiceImpl implements PropertyService {
         return propertyRepository.findAll()
                 .stream()
                 .map(PropertyDtoMapper::mapDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 }

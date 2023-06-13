@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.gentaliti.booking.domain.BookingStatus;
 import com.gentaliti.booking.domain.BookingType;
+import com.gentaliti.common.Constants;
 import com.gentaliti.common.config.LocalDateTimeDeserializer;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,10 +26,10 @@ public class BookingDto {
     private Integer propertyId;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = Constants.DATE_PATTERN)
     private LocalDateTime startDate;
 
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @JsonFormat(pattern = Constants.DATE_PATTERN)
     private LocalDateTime endDate;
 }

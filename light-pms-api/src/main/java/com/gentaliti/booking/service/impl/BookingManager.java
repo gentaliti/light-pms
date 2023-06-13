@@ -62,11 +62,11 @@ public class BookingManager {
 
     private BookingDto updateBlock(BookingDto bookingDto) {
         Booking booking = bookingRepository.findById(bookingDto.getId()).orElseThrow(() -> new NotFoundException("Block not found"));
-
         booking.setStartDate(bookingDto.getStartDate());
         booking.setEndDate(bookingDto.getEndDate());
         booking.setStatus(bookingDto.getStatus());
         booking.setType(bookingDto.getType());
+
         booking = bookingRepository.save(booking);
         return BookingDtoMapper.mapBooking(booking);
     }
