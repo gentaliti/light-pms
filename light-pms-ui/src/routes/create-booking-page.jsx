@@ -23,7 +23,6 @@ export default function CreateBooking() {
 
     const fetchBooking = async () => {
         if (!bookingId) {
-            console.log('here');
             setStartDate(null);
             setEndDate(null);
             setBookingType(defaultBookingType);
@@ -45,8 +44,8 @@ export default function CreateBooking() {
         event.preventDefault();
 
         await axios.post(`${API_URL}/booking`, {
-            startDate: dateFormat(startDate, DATE_PATTERN),
-            endDate: dateFormat(endDate, DATE_PATTERN),
+            startDate: dateFormat(startDate, 'yyyy-mm-dd HH:mm'),
+            endDate: dateFormat(endDate, 'yyyy-mm-dd HH:mm'),
             type: bookingType,
             propertyId: propertyId
         }).then(res => {
