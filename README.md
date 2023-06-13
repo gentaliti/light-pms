@@ -4,19 +4,11 @@
 
 Light version of Property Management System written in Spring Boot & React.
 
-## Features
-
-- [x] Booking Overlaps
-- [x] Distributed Locking
-- [x] Crud Operations for Bookings
-- [x] Crud Operations for Blocks
-- [x] Rebooking option
-
-
-##Table of Contents
+## Table of Contents
+- [Features](#features)
 - [Infrastructure](#infrastructure)
-  - [How to run](#running-in-docker)
-  - [Additional notes](#running-without-docker)
+  - [Running with docker](#running-in-docker)
+  - [Running without docker](#running-without-docker)
 - [Backend](#backend)
   - [Domain](#domain)
   - [Distributed Locking](#distributed-locking)
@@ -25,6 +17,15 @@ Light version of Property Management System written in Spring Boot & React.
 - [UI](#ui)
   - [Code structure](#code-structure)
   - [Additional notes](#additional-notes)
+  
+## Features
+
+- [x] Booking Overlaps
+- [x] Distributed Locking
+- [x] Crud Operations for Bookings
+- [x] Crud Operations for Blocks
+- [x] Rebooking option
+
 
 
 ## Infrastructure
