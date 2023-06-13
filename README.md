@@ -95,7 +95,7 @@ Divided it into separate modules or folders, each serving a specific purpose:
 
 
 ### Additional UI notes
-- There are parts of the code in the UI code which can be improved more (by having Separation of Concerns)
+- There are parts of the code in the UI code which can be improved more, by having Separation of Concerns, reusing code etc.
 - For simplicity, for all the Properties a single local image is used (rather than saving the image path in the database).
 
 
